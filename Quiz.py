@@ -1,3 +1,5 @@
+import random
+
 Capitals_dict = {
 		'Tamilnadu' : 'Chennai',
 		'Karnataka' : 'Bangalore',
@@ -7,18 +9,22 @@ Capitals_dict = {
 		'Telungana' : 'Hyderabad'
 }
 
-import random
+States_List = list(Capitals_dict.keys())
+random_states = random.sample(States_List,5)
+Score = 0
 
-states = list(Capitals_dict.keys())
 
-for i in [1,2,3,4,5]:
-	State = random.choice(states)
-	Capital = Capitals_dict[State] 
-	Capital_guess = input("What is the Capital of " + State + " ?")
+for i in range(0,5):
+    State = random_states[i]
+    Capitals_rstates = Capitals_dict[State]
+    Guess_capital = input("What is the capital of ''" + State + "''?")
+    
+    if Capitals_rstates == Guess_capital.title():
+        print ("Correct Answer. Good Job!!!\n")
+        Score += 1
+    else:
+        print ("Wrong Answer. Capital of " + State + " is '" + Capitals_rstates + "'.\n")
         
-	if (Capital_guess == Capital):
-		print("Correct Answer. Good Job!!!")
-	else:
-		print("Wrong Answer. Capital of " + State + " is " + Capital + ".")
-
-print("All Done!!!")
+Score_percentage = Score * 20        
+print ("Thanks for playing!!! You got " + str(Score_percentage) + "% score")
+     
